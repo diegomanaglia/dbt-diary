@@ -27,14 +27,14 @@ export default function Stats() {
 
   return (
     <div className="flex flex-col min-h-full" style={{ paddingBottom: 100 }}>
-      <header className="px-6 pt-12 pb-4">
+      <header className="px-8 pt-12 pb-4">
         <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
           Estatisticas
         </h1>
       </header>
 
       {/* Period selector */}
-      <div className="px-6 py-4 flex gap-2">
+      <div className="px-8 py-4 flex gap-2">
         {periods.map(p => {
           const active = period === p.key
           return (
@@ -60,7 +60,7 @@ export default function Stats() {
         })}
       </div>
 
-      <div className="px-6 flex flex-col gap-8">
+      <div className="px-8 flex flex-col gap-8">
         {/* Summary cards */}
         <div className="grid grid-cols-2 gap-4">
           <StatCard label="Analises" value={stats.totalChains} />

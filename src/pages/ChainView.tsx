@@ -27,7 +27,7 @@ export default function ChainView() {
   return (
     <div className="flex flex-col min-h-full" style={{ paddingBottom: 100 }}>
       {/* Header */}
-      <header className="px-6 pt-8 pb-5 flex items-center gap-4">
+      <header className="px-8 pt-8 pb-5 flex items-center gap-4">
         <button
           onClick={() => navigate('/')}
           className="btn-ghost flex items-center justify-center"
@@ -55,7 +55,7 @@ export default function ChainView() {
       </header>
 
       {/* Action buttons */}
-      <div className="px-6 flex gap-3 mb-8">
+      <div className="px-8 flex gap-3 mb-8">
         <button
           onClick={() => navigate(`/chain/${entry.id}/edit`)}
           className="flex-1 py-3 btn-ghost text-sm font-medium"
@@ -81,7 +81,7 @@ export default function ChainView() {
       </div>
 
       {/* Content sections */}
-      <div className="px-6 flex flex-col gap-10">
+      <div className="px-8 flex flex-col gap-10">
         <Section title="1. Comportamento-Problema">
           <p className="text-sm" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
             {entry.problemBehavior || '--'}

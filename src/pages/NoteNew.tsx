@@ -24,7 +24,7 @@ export default function NoteNew() {
 
   return (
     <div className="flex flex-col min-h-full" style={{ paddingBottom: 100 }}>
-      <header className="px-6 pt-8 pb-6 flex items-center gap-4">
+      <header className="px-8 pt-8 pb-6 flex items-center gap-4">
         <button
           onClick={() => navigate('/')}
           className="btn-ghost flex items-center justify-center"
@@ -39,7 +39,7 @@ export default function NoteNew() {
         </h1>
       </header>
 
-      <div className="px-6 flex flex-col gap-8 flex-1">
+      <div className="px-8 flex flex-col gap-8 flex-1">
         <div>
           <label className="label-upper block mb-4">Conteudo</label>
           <textarea
@@ -86,7 +86,7 @@ export default function NoteNew() {
         </div>
       </div>
 
-      <div className="px-6 py-5">
+      <div className="px-8 py-5">
         <button
           onClick={handleSave}
           disabled={!content.trim()}

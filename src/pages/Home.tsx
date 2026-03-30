@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-full" style={{ paddingBottom: 100 }}>
       {/* Header */}
-      <header className="px-6 pt-12 pb-4">
+      <header className="px-8 pt-12 pb-4">
         <p className="label-upper" style={{ marginBottom: 10 }}>
           {formatDate(new Date())}
         </p>
@@ -53,7 +53,7 @@ export default function Home() {
       </header>
 
       {/* Action buttons */}
-      <div className="px-6 pt-4 pb-3 flex gap-3">
+      <div className="px-8 pt-4 pb-3 flex gap-3">
         <button
           onClick={() => navigate('/chain/new')}
           className="flex-1 py-3.5 btn-accent text-sm"
@@ -71,7 +71,7 @@ export default function Home() {
       </div>
 
       {/* Filter tabs */}
-      <div className="px-6 py-4 flex gap-2">
+      <div className="px-8 py-4 flex gap-2">
         {filters.map(f => {
           const active = filter === f.key
           return (
@@ -98,7 +98,7 @@ export default function Home() {
       </div>
 
       {/* Items list */}
-      <div className="px-6 flex flex-col gap-4 flex-1">
+      <div className="px-8 flex flex-col gap-4 flex-1">
         {items.length === 0 ? (
           <EmptyState />
         ) : (

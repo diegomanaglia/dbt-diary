@@ -70,7 +70,7 @@ function ChainForm({ editId }: ChainFormProps) {
   return (
     <div className="flex flex-col min-h-full">
       {/* Header */}
-      <header className="px-6 pt-8 pb-5 flex items-center gap-4">
+      <header className="px-8 pt-8 pb-5 flex items-center gap-4">
         <button
           onClick={() => navigate('/')}
           className="btn-ghost flex items-center justify-center"
@@ -86,7 +86,7 @@ function ChainForm({ editId }: ChainFormProps) {
       </header>
 
       {/* Step content */}
-      <div className="flex-1 px-6 py-6 overflow-y-auto">
+      <div className="flex-1 px-8 py-6 overflow-y-auto">
         {step === 1 && <Step1 form={form} update={update} />}
         {step === 2 && <Step2 form={form} update={update} />}
         {step === 3 && <Step3 form={form} update={update} />}
@@ -101,7 +101,7 @@ function ChainForm({ editId }: ChainFormProps) {
 
       {/* Footer navigation */}
       <div
-        className="px-6 py-5 flex gap-3"
+        className="px-8 py-5 flex gap-3"
         style={{
           borderTop: '1px solid var(--border-subtle)',
           paddingBottom: 'max(20px, env(safe-area-inset-bottom))',
