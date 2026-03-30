@@ -1,20 +1,12 @@
 import type { QuickNote } from '../db'
 import { relativeDate } from '../utils/dates'
 
-const tagColors: Record<string, string> = {
-  geral: '#52525B',
-  insight: '#0891B2',
-  gatilho: '#F59E0B',
-  conquista: '#10B981',
-  sessao: '#8B5CF6',
-}
-
-const tagLabels: Record<string, string> = {
-  geral: 'Geral',
-  insight: 'Insight',
-  gatilho: 'Gatilho',
-  conquista: 'Conquista',
-  sessao: 'Sessao',
+const tagConfig: Record<string, { color: string; label: string }> = {
+  geral: { color: '#94A3B8', label: 'Geral' },
+  insight: { color: '#06B6D4', label: 'Insight' },
+  gatilho: { color: '#FBBF24', label: 'Gatilho' },
+  conquista: { color: '#34D399', label: 'Conquista' },
+  sessao: { color: '#A78BFA', label: 'Sessao' },
 }
 
 interface Props {
@@ -24,42 +16,36 @@ interface Props {
 
 export default function NoteCard({ note, onClick }: Props) {
   const preview = note.content
-    ? note.content.slice(0, 100) + (note.content.length > 100 ? '...' : '')
+    ? note.content.slice(0, 90) + (note.content.length > 90 ? '...' : '')
     : 'Sem conteudo'
 
-  const color = tagColors[note.tag] || '#52525B'
+  const tag = tagConfig[note.tag] || tagConfig.geral
 
   return (
     <button
       onClick={onClick}
-      className="w-full text-left flex gap-3 p-4 rounded-2xl"
-      style={{
-        background: '#111113',
-        border: '1px solid #1A1A1D',
-        cursor: 'pointer',
-        transition: 'border-color 200ms',
-        minHeight: 44,
-      }}
-      onMouseEnter={e => (e.currentTarget.style.borderColor = '#27272A')}
-      onMouseLeave={e => (e.currentTarget.style.borderColor = '#1A1A1D')}
+      className="w-full text-left glass glass-hover p-4 flex gap-4"
+      style={{ cursor: 'pointer', minHeight: 44 }}
     >
-      <div
-        className="rounded-full shrink-0"
-        style={{ width: 3, minHeight: 36, background: color, opacity: 0.8 }}
-      />
+      <div className="shrink-0 pt-1">
+        <div style={{
+          width: 10,
+          height: 10,
+          borderRadius: '50%',
+          background: tag.color,
+          boxShadow: `0 0 8px ${tag.color}40`,
+        }} />
+      </div>
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-1.5">
-          <span style={{ fontSize: 11, color: '#52525B', fontWeight: 500 }}>
+        <div className="flex items-center gap-2 mb-2">
+          <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 500 }}>
             {relativeDate(note.createdAt)}
           </span>
-          <span
-            className="px-2 py-0.5 rounded-full"
-            style={{ fontSize: 10, background: color + '15', color, fontWeight: 500 }}
-          >
-            {tagLabels[note.tag]}
+          <span className="badge" style={{ background: `${tag.color}15`, color: tag.color }}>
+            {tag.label}
           </span>
         </div>
-        <p className="text-sm truncate" style={{ color: '#A1A1AA', fontWeight: 400 }}>
+        <p className="text-sm truncate" style={{ color: 'var(--text-secondary)', lineHeight: 1.5 }}>
           {preview}
         </p>
       </div>

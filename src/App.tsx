@@ -9,10 +9,7 @@ import BottomNav from './components/BottomNav'
 export default function App() {
   return (
     <BrowserRouter>
-      <div
-        className="mx-auto min-h-screen relative"
-        style={{ maxWidth: 480, background: '#09090B' }}
-      >
+      <div className="mx-auto min-h-screen relative" style={{ maxWidth: 480 }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/chain/new" element={<ChainNewPage />} />

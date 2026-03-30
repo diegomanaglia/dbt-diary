@@ -70,19 +70,11 @@ function ChainForm({ editId }: ChainFormProps) {
   return (
     <div className="flex flex-col min-h-full">
       {/* Header */}
-      <header className="px-5 pt-5 pb-3 flex items-center gap-3">
+      <header className="px-6 pt-6 pb-4 flex items-center gap-3">
         <button
           onClick={() => navigate('/')}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: '#FAFAFA',
-            cursor: 'pointer',
-            minWidth: 44,
-            minHeight: 44,
-            display: 'flex',
-            alignItems: 'center',
-          }}
+          className="btn-ghost flex items-center justify-center"
+          style={{ width: 44, height: 44, borderRadius: 12, padding: 0 }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <polyline points="15 18 9 12 15 6" />
@@ -94,7 +86,7 @@ function ChainForm({ editId }: ChainFormProps) {
       </header>
 
       {/* Step content */}
-      <div className="flex-1 px-5 py-4 overflow-y-auto">
+      <div className="flex-1 px-6 py-4 overflow-y-auto">
         {step === 1 && <Step1 form={form} update={update} />}
         {step === 2 && <Step2 form={form} update={update} />}
         {step === 3 && <Step3 form={form} update={update} />}
@@ -109,41 +101,19 @@ function ChainForm({ editId }: ChainFormProps) {
 
       {/* Footer navigation */}
       <div
-        className="px-5 py-4 flex gap-3"
+        className="px-6 py-5 flex gap-3"
         style={{
-          borderTop: '1px solid #1A1A1D',
-          paddingBottom: 'max(16px, env(safe-area-inset-bottom))',
+          borderTop: '1px solid var(--border-subtle)',
+          paddingBottom: 'max(20px, env(safe-area-inset-bottom))',
         }}
       >
         {step > 1 && (
-          <button
-            onClick={goPrev}
-            className="flex-1 py-3 rounded-xl text-sm font-medium"
-            style={{
-              background: '#111113',
-              border: '1px solid #1A1A1D',
-              color: '#A1A1AA',
-              cursor: 'pointer',
-              minHeight: 44,
-              transition: 'border-color 200ms',
-            }}
-          >
+          <button onClick={goPrev} className="flex-1 py-3.5 btn-ghost text-sm font-medium" style={{ minHeight: 48 }}>
             Voltar
           </button>
         )}
         {step < TOTAL_STEPS && (
-          <button
-            onClick={goNext}
-            className="flex-1 py-3 rounded-xl text-sm font-medium"
-            style={{
-              background: '#0891B2',
-              border: 'none',
-              color: '#fff',
-              cursor: 'pointer',
-              minHeight: 44,
-              transition: 'opacity 200ms',
-            }}
-          >
+          <button onClick={goNext} className="flex-1 py-3.5 btn-accent text-sm" style={{ minHeight: 48 }}>
             Proximo
           </button>
         )}
@@ -152,18 +122,13 @@ function ChainForm({ editId }: ChainFormProps) {
   )
 }
 
-// Shared types
-type UpdateFn = <K extends keyof Omit<ChainEntry, 'id'>>(
-  key: K,
-  value: Omit<ChainEntry, 'id'>[K]
-) => void
+type UpdateFn = <K extends keyof Omit<ChainEntry, 'id'>>(key: K, value: Omit<ChainEntry, 'id'>[K]) => void
 
 interface StepProps {
   form: Omit<ChainEntry, 'id'>
   update: UpdateFn
 }
 
-// --- Textarea input ---
 function TextArea({
   label,
   hint,
@@ -181,28 +146,17 @@ function TextArea({
 }) {
   return (
     <div>
-      <label className="block mb-2" style={{ fontSize: 11, color: '#52525B', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-        {label}
-      </label>
+      <label className="label-upper block mb-3">{label}</label>
       <textarea
         value={value}
         onChange={e => onChange(e.target.value)}
         rows={rows}
         placeholder={placeholder}
-        className="w-full p-4 rounded-xl text-sm"
-        style={{
-          background: '#111113',
-          border: '1px solid #1A1A1D',
-          color: '#FAFAFA',
-          outline: 'none',
-          lineHeight: 1.6,
-          transition: 'border-color 200ms',
-        }}
-        onFocus={e => (e.target.style.borderColor = '#0891B2')}
-        onBlur={e => (e.target.style.borderColor = '#1A1A1D')}
+        className="w-full p-4 input-glass text-sm"
+        style={{ lineHeight: 1.7 }}
       />
       {hint && (
-        <p className="mt-2" style={{ fontSize: 11, color: '#3F3F46', lineHeight: 1.5 }}>
+        <p className="mt-2" style={{ fontSize: 11, color: 'var(--text-muted)', lineHeight: 1.5 }}>
           {hint}
         </p>
       )}
@@ -210,11 +164,10 @@ function TextArea({
   )
 }
 
-// --- Step 1: Comportamento-Problema ---
 function Step1({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Comportamento-Problema
       </h2>
       <TextArea
@@ -225,11 +178,9 @@ function Step1({ form, update }: StepProps) {
         placeholder="O que voce fez, disse, pensou ou sentiu?"
       />
       <div>
-        <div className="flex justify-between items-center mb-2">
-          <span style={{ fontSize: 11, color: '#52525B', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-            Intensidade
-          </span>
-          <span className="text-sm font-semibold" style={{ color: '#0891B2' }}>
+        <div className="flex justify-between items-center mb-3">
+          <span className="label-upper">Intensidade</span>
+          <span className="text-lg font-bold" style={{ color: 'var(--accent)' }}>
             {form.behaviorIntensity}
           </span>
         </div>
@@ -242,21 +193,20 @@ function Step1({ form, update }: StepProps) {
           className="w-full"
           style={{ height: 44 }}
         />
-        <div className="flex justify-between">
-          <span style={{ fontSize: 10, color: '#3F3F46', fontWeight: 500 }}>Leve</span>
-          <span style={{ fontSize: 10, color: '#3F3F46', fontWeight: 500 }}>Moderado</span>
-          <span style={{ fontSize: 10, color: '#3F3F46', fontWeight: 500 }}>Extremo</span>
+        <div className="flex justify-between mt-1">
+          <span style={{ fontSize: 10, color: 'var(--text-muted)', fontWeight: 500 }}>Leve</span>
+          <span style={{ fontSize: 10, color: 'var(--text-muted)', fontWeight: 500 }}>Moderado</span>
+          <span style={{ fontSize: 10, color: 'var(--text-muted)', fontWeight: 500 }}>Extremo</span>
         </div>
       </div>
     </div>
   )
 }
 
-// --- Step 2: Evento Disparador ---
 function Step2({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Evento Disparador
       </h2>
       <TextArea
@@ -266,35 +216,23 @@ function Step2({ form, update }: StepProps) {
         onChange={v => update('promptingEvent', v)}
       />
       <div>
-        <label className="block mb-2" style={{ fontSize: 11, color: '#52525B', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-          Quando aconteceu?
-        </label>
+        <label className="label-upper block mb-3">Quando aconteceu?</label>
         <input
           type="date"
           value={form.promptingEventDate}
           onChange={e => update('promptingEventDate', e.target.value)}
-          className="w-full p-4 rounded-xl text-sm"
-          style={{
-            background: '#111113',
-            border: '1px solid #1A1A1D',
-            color: '#FAFAFA',
-            outline: 'none',
-            minHeight: 44,
-            transition: 'border-color 200ms',
-          }}
-          onFocus={e => (e.target.style.borderColor = '#0891B2')}
-          onBlur={e => (e.target.style.borderColor = '#1A1A1D')}
+          className="w-full p-4 input-glass text-sm"
+          style={{ minHeight: 44 }}
         />
       </div>
     </div>
   )
 }
 
-// --- Step 3: Fatores de Vulnerabilidade ---
 function Step3({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Fatores de Vulnerabilidade
       </h2>
       <VulnerabilityChips
@@ -310,7 +248,6 @@ function Step3({ form, update }: StepProps) {
   )
 }
 
-// --- Step 4: Elos da Cadeia ---
 function Step4({ form, update }: StepProps) {
   const links = form.chainLinks
 
@@ -331,87 +268,60 @@ function Step4({ form, update }: StepProps) {
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Elos da Cadeia
       </h2>
-      <p style={{ fontSize: 11, color: '#3F3F46', lineHeight: 1.5 }}>
+      <p style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.5 }}>
         Detalhe cada pensamento, sentimento e acao entre o disparador e o comportamento-problema.
       </p>
 
       {links.map((link, i) => (
         <div key={i} className="flex gap-3">
-          {/* Timeline line */}
-          <div className="flex flex-col items-center pt-2">
-            <div
-              className="rounded-full shrink-0"
-              style={{ width: 8, height: 8, background: '#0891B2', opacity: 0.6 }}
-            />
+          <div className="flex flex-col items-center pt-3">
+            <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--accent)', opacity: 0.6 }} />
             {i < links.length - 1 && (
-              <div className="flex-1" style={{ width: 1, background: '#1A1A1D' }} />
+              <div style={{ width: 1, flex: 1, background: 'var(--border-subtle)' }} />
             )}
           </div>
-
-          <div
-            className="flex-1 p-4 rounded-xl"
-            style={{ background: '#111113', border: '1px solid #1A1A1D' }}
-          >
-            {/* Type selector */}
+          <div className="flex-1 glass p-4" style={{ borderRadius: 14 }}>
             <div className="flex flex-wrap gap-1 mb-3">
-              {CHAIN_LINK_TYPES.map(t => (
-                <button
-                  key={t.key}
-                  type="button"
-                  onClick={() => updateLink(i, 'type', t.key)}
-                  className="px-3 py-1.5 rounded-md"
-                  style={{
-                    fontSize: 11,
-                    background: link.type === t.key ? '#0891B212' : 'transparent',
-                    border: `1px solid ${link.type === t.key ? '#0891B2' : '#27272A'}`,
-                    color: link.type === t.key ? '#0891B2' : '#52525B',
-                    cursor: 'pointer',
-                    minHeight: 32,
-                    fontWeight: link.type === t.key ? 500 : 400,
-                    transition: 'all 200ms',
-                  }}
-                >
-                  {t.label}
-                </button>
-              ))}
+              {CHAIN_LINK_TYPES.map(t => {
+                const active = link.type === t.key
+                return (
+                  <button
+                    key={t.key}
+                    type="button"
+                    onClick={() => updateLink(i, 'type', t.key)}
+                    className="px-3 py-1.5"
+                    style={{
+                      fontSize: 11,
+                      background: active ? 'var(--accent-glow)' : 'transparent',
+                      border: `1px solid ${active ? 'var(--border-active)' : 'var(--border-subtle)'}`,
+                      color: active ? 'var(--accent)' : 'var(--text-muted)',
+                      cursor: 'pointer',
+                      borderRadius: 8,
+                      fontWeight: active ? 600 : 400,
+                      transition: 'all 200ms',
+                    }}
+                  >
+                    {t.label}
+                  </button>
+                )
+              })}
             </div>
-
-            {/* Content */}
             <div className="flex gap-2">
               <textarea
                 value={link.content}
                 onChange={e => updateLink(i, 'content', e.target.value)}
                 rows={2}
                 placeholder="Descreva este elo..."
-                className="flex-1 p-3 rounded-lg text-sm"
-                style={{
-                  background: '#09090B',
-                  border: '1px solid #1A1A1D',
-                  color: '#FAFAFA',
-                  outline: 'none',
-                  lineHeight: 1.5,
-                  transition: 'border-color 200ms',
-                }}
-                onFocus={e => (e.target.style.borderColor = '#0891B2')}
-                onBlur={e => (e.target.style.borderColor = '#1A1A1D')}
+                className="flex-1 p-3 input-glass text-sm"
+                style={{ borderRadius: 10, lineHeight: 1.5 }}
               />
               <button
                 onClick={() => removeLink(i)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#3F3F46',
-                  cursor: 'pointer',
-                  minWidth: 44,
-                  minHeight: 44,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'color 200ms',
-                }}
+                className="btn-ghost flex items-center justify-center"
+                style={{ width: 40, height: 40, borderRadius: 10, padding: 0, flexShrink: 0 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <line x1="18" y1="6" x2="6" y2="18" />
@@ -426,14 +336,15 @@ function Step4({ form, update }: StepProps) {
       <button
         type="button"
         onClick={addLink}
-        className="w-full py-3 rounded-xl text-sm font-medium"
+        className="w-full py-3.5 text-sm font-semibold"
         style={{
           background: 'transparent',
-          border: '1px dashed #27272A',
-          color: '#0891B2',
+          border: '1px dashed var(--border-default)',
+          color: 'var(--accent)',
           cursor: 'pointer',
-          minHeight: 44,
-          transition: 'border-color 200ms',
+          minHeight: 48,
+          borderRadius: 14,
+          transition: 'all 250ms ease',
         }}
       >
         + Adicionar elo
@@ -442,48 +353,22 @@ function Step4({ form, update }: StepProps) {
   )
 }
 
-// --- Step 5: Consequencias ---
 function Step5({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
-        Consequencias
-      </h2>
-      <TextArea
-        label="Consequencias externas -- curto prazo"
-        value={form.consequencesShortTerm}
-        onChange={v => update('consequencesShortTerm', v)}
-        rows={3}
-      />
-      <TextArea
-        label="Consequencias externas -- longo prazo"
-        value={form.consequencesLongTerm}
-        onChange={v => update('consequencesLongTerm', v)}
-        rows={3}
-      />
-      <TextArea
-        label="Consequencias internas -- curto prazo"
-        value={form.consequencesInternal}
-        onChange={v => update('consequencesInternal', v)}
-        rows={3}
-      />
-      <TextArea
-        label="Consequencias internas -- longo prazo"
-        value={form.consequencesExternal}
-        onChange={v => update('consequencesExternal', v)}
-        rows={3}
-      />
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Consequencias</h2>
+      <TextArea label="Consequencias externas -- curto prazo" value={form.consequencesShortTerm} onChange={v => update('consequencesShortTerm', v)} rows={3} />
+      <TextArea label="Consequencias externas -- longo prazo" value={form.consequencesLongTerm} onChange={v => update('consequencesLongTerm', v)} rows={3} />
+      <TextArea label="Consequencias internas -- curto prazo" value={form.consequencesInternal} onChange={v => update('consequencesInternal', v)} rows={3} />
+      <TextArea label="Consequencias internas -- longo prazo" value={form.consequencesExternal} onChange={v => update('consequencesExternal', v)} rows={3} />
     </div>
   )
 }
 
-// --- Step 6: Habilidades Alternativas ---
 function Step6({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
-        Habilidades Alternativas
-      </h2>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Habilidades Alternativas</h2>
       <TextArea
         label="Que habilidades DBT poderiam substituir os elos problematicos?"
         hint="Pense em Mindfulness, Tolerancia ao Mal-Estar, Regulacao Emocional, Efetividade Interpessoal."
@@ -494,13 +379,10 @@ function Step6({ form, update }: StepProps) {
   )
 }
 
-// --- Step 7: Plano de Prevencao ---
 function Step7({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
-        Plano de Prevencao
-      </h2>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Plano de Prevencao</h2>
       <TextArea
         label="Como reduzir sua vulnerabilidade para que a cadeia nem comece?"
         hint="Pense em rotinas, autocuidado, limites e estrategias preventivas."
@@ -511,7 +393,6 @@ function Step7({ form, update }: StepProps) {
   )
 }
 
-// --- Step 8: Reparacao e Fechamento ---
 function Step8({
   form,
   update,
@@ -519,9 +400,7 @@ function Step8({
 }: StepProps & { onFinish: () => void }) {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-base font-medium" style={{ color: '#FAFAFA' }}>
-        Reparacao e Fechamento
-      </h2>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Reparacao e Fechamento</h2>
       <TextArea
         label="O que voce pode fazer para reparar as consequencias?"
         hint="Repare o dano real. Reconstrua confianca com acoes, nao com palavras."
@@ -529,69 +408,58 @@ function Step8({
         onChange={v => update('repairPlan', v)}
       />
 
-      {/* Toggle reparacao */}
+      {/* Toggle */}
       <div className="flex items-center justify-between">
-        <span className="text-sm" style={{ color: '#A1A1AA' }}>
+        <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
           Reparacao realizada?
         </span>
         <button
           type="button"
           onClick={() => update('repairDone', !form.repairDone)}
-          className="relative rounded-full"
+          className="relative"
           style={{
-            width: 48,
-            height: 28,
-            background: form.repairDone ? '#10B981' : '#27272A',
+            width: 52,
+            height: 30,
+            background: form.repairDone ? 'var(--success)' : 'rgba(255,255,255,0.08)',
             border: 'none',
             cursor: 'pointer',
-            transition: 'background 200ms',
-            minHeight: 44,
+            borderRadius: 15,
+            transition: 'background 250ms',
             padding: 0,
+            boxShadow: form.repairDone ? '0 0 12px rgba(52, 211, 153, 0.3)' : 'none',
           }}
         >
           <span
-            className="absolute rounded-full"
+            className="absolute"
             style={{
-              width: 20,
-              height: 20,
-              background: '#FAFAFA',
+              width: 22,
+              height: 22,
+              background: '#fff',
+              borderRadius: '50%',
               top: 4,
-              left: form.repairDone ? 24 : 4,
-              transition: 'left 200ms',
+              left: form.repairDone ? 26 : 4,
+              transition: 'left 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           />
         </button>
       </div>
 
-      <MoodSlider
-        label="Humor antes do registro"
-        value={form.moodBefore}
-        onChange={v => update('moodBefore', v)}
-      />
-      <MoodSlider
-        label="Humor agora"
-        value={form.moodAfter}
-        onChange={v => update('moodAfter', v)}
-      />
+      <MoodSlider label="Humor antes do registro" value={form.moodBefore} onChange={v => update('moodBefore', v)} />
+      <MoodSlider label="Humor agora" value={form.moodAfter} onChange={v => update('moodAfter', v)} />
 
-      <TextArea
-        label="Notas adicionais"
-        value={form.notes}
-        onChange={v => update('notes', v)}
-        rows={3}
-        placeholder="Opcional"
-      />
+      <TextArea label="Notas adicionais" value={form.notes} onChange={v => update('notes', v)} rows={3} placeholder="Opcional" />
 
       <button
         onClick={onFinish}
-        className="w-full py-3 rounded-xl text-sm font-medium"
+        className="w-full py-3.5 text-sm font-semibold"
         style={{
-          background: '#10B981',
+          background: 'linear-gradient(135deg, #34D399, #10B981)',
           border: 'none',
           color: '#fff',
           cursor: 'pointer',
-          minHeight: 44,
-          transition: 'opacity 200ms',
+          minHeight: 48,
+          borderRadius: 14,
+          boxShadow: '0 0 20px rgba(52, 211, 153, 0.2)',
         }}
       >
         Finalizar Analise

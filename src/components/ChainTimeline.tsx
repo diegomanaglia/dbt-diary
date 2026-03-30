@@ -1,19 +1,11 @@
 import type { ChainLink } from '../db'
 
-const typeColors: Record<string, string> = {
-  pensamento: '#0891B2',
-  sentimento: '#F59E0B',
-  sensacao: '#8B5CF6',
-  acao: '#EF4444',
-  evento: '#10B981',
-}
-
-const typeLabels: Record<string, string> = {
-  pensamento: 'Pensamento',
-  sentimento: 'Sentimento',
-  sensacao: 'Sensacao',
-  acao: 'Acao',
-  evento: 'Evento',
+const typeConfig: Record<string, { color: string; label: string }> = {
+  pensamento: { color: '#06B6D4', label: 'Pensamento' },
+  sentimento: { color: '#FBBF24', label: 'Sentimento' },
+  sensacao: { color: '#A78BFA', label: 'Sensacao' },
+  acao: { color: '#F87171', label: 'Acao' },
+  evento: { color: '#34D399', label: 'Evento' },
 }
 
 interface Props {
@@ -23,7 +15,7 @@ interface Props {
 export default function ChainTimeline({ links }: Props) {
   if (links.length === 0) {
     return (
-      <p className="text-sm" style={{ color: '#3F3F46' }}>
+      <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
         Nenhum elo adicionado.
       </p>
     )
@@ -32,34 +24,24 @@ export default function ChainTimeline({ links }: Props) {
   return (
     <div className="flex flex-col">
       {links.map((link, i) => {
-        const color = typeColors[link.type] || '#52525B'
+        const config = typeConfig[link.type] || { color: '#94A3B8', label: link.type }
         return (
-          <div key={i} className="flex gap-3">
+          <div key={i} className="flex gap-4">
             <div className="flex flex-col items-center">
-              <div
-                className="rounded-full shrink-0"
-                style={{
-                  width: 8,
-                  height: 8,
-                  background: color,
-                  marginTop: 6,
-                  opacity: 0.8,
-                }}
-              />
+              <div style={{
+                width: 12, height: 12, borderRadius: '50%',
+                background: config.color, boxShadow: `0 0 8px ${config.color}50`,
+                marginTop: 4, border: '2px solid var(--bg-base)',
+              }} />
               {i < links.length - 1 && (
-                <div
-                  className="flex-1"
-                  style={{ width: 1, background: '#1A1A1D', minHeight: 24 }}
-                />
+                <div style={{ width: 2, flex: 1, minHeight: 20, borderRadius: 1, background: `linear-gradient(to bottom, ${config.color}30, rgba(255,255,255,0.04))` }} />
               )}
             </div>
-            <div className="pb-4 flex-1 min-w-0">
-              <span
-                style={{ fontSize: 11, fontWeight: 600, color, letterSpacing: '0.02em' }}
-              >
-                {typeLabels[link.type]}
+            <div className="pb-5 flex-1 min-w-0">
+              <span className="badge" style={{ background: `${config.color}15`, color: config.color, marginBottom: 6 }}>
+                {config.label}
               </span>
-              <p className="text-sm mt-1" style={{ color: '#A1A1AA', lineHeight: 1.5 }}>
+              <p className="text-sm" style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 {link.content}
               </p>
             </div>
