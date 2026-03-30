@@ -1,7 +1,7 @@
 import type { ChainLink } from '../db'
 
 const typeColors: Record<string, string> = {
-  pensamento: '#3B82F6',
+  pensamento: '#0891B2',
   sentimento: '#F59E0B',
   sensacao: '#8B5CF6',
   acao: '#EF4444',
@@ -11,8 +11,8 @@ const typeColors: Record<string, string> = {
 const typeLabels: Record<string, string> = {
   pensamento: 'Pensamento',
   sentimento: 'Sentimento',
-  sensacao: 'Sensação',
-  acao: 'Ação',
+  sensacao: 'Sensacao',
+  acao: 'Acao',
   evento: 'Evento',
 }
 
@@ -23,7 +23,7 @@ interface Props {
 export default function ChainTimeline({ links }: Props) {
   if (links.length === 0) {
     return (
-      <p className="text-sm" style={{ color: '#6B6B6B' }}>
+      <p className="text-sm" style={{ color: '#3F3F46' }}>
         Nenhum elo adicionado.
       </p>
     )
@@ -32,34 +32,34 @@ export default function ChainTimeline({ links }: Props) {
   return (
     <div className="flex flex-col">
       {links.map((link, i) => {
-        const color = typeColors[link.type] || '#6B6B6B'
+        const color = typeColors[link.type] || '#52525B'
         return (
           <div key={i} className="flex gap-3">
             <div className="flex flex-col items-center">
               <div
                 className="rounded-full shrink-0"
                 style={{
-                  width: 12,
-                  height: 12,
+                  width: 8,
+                  height: 8,
                   background: color,
-                  marginTop: 4,
+                  marginTop: 6,
+                  opacity: 0.8,
                 }}
               />
               {i < links.length - 1 && (
                 <div
                   className="flex-1"
-                  style={{ width: 2, background: '#1E1E1E', minHeight: 24 }}
+                  style={{ width: 1, background: '#1A1A1D', minHeight: 24 }}
                 />
               )}
             </div>
             <div className="pb-4 flex-1 min-w-0">
               <span
-                className="text-xs font-medium"
-                style={{ color }}
+                style={{ fontSize: 11, fontWeight: 600, color, letterSpacing: '0.02em' }}
               >
                 {typeLabels[link.type]}
               </span>
-              <p className="text-sm mt-1" style={{ color: '#E5E5E5' }}>
+              <p className="text-sm mt-1" style={{ color: '#A1A1AA', lineHeight: 1.5 }}>
                 {link.content}
               </p>
             </div>

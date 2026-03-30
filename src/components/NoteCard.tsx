@@ -2,8 +2,8 @@ import type { QuickNote } from '../db'
 import { relativeDate } from '../utils/dates'
 
 const tagColors: Record<string, string> = {
-  geral: '#6B6B6B',
-  insight: '#3B82F6',
+  geral: '#52525B',
+  insight: '#0891B2',
   gatilho: '#F59E0B',
   conquista: '#10B981',
   sessao: '#8B5CF6',
@@ -14,7 +14,7 @@ const tagLabels: Record<string, string> = {
   insight: 'Insight',
   gatilho: 'Gatilho',
   conquista: 'Conquista',
-  sessao: 'Sessão',
+  sessao: 'Sessao',
 }
 
 interface Props {
@@ -25,39 +25,41 @@ interface Props {
 export default function NoteCard({ note, onClick }: Props) {
   const preview = note.content
     ? note.content.slice(0, 100) + (note.content.length > 100 ? '...' : '')
-    : 'Sem conteúdo'
+    : 'Sem conteudo'
 
-  const color = tagColors[note.tag] || '#6B6B6B'
+  const color = tagColors[note.tag] || '#52525B'
 
   return (
     <button
       onClick={onClick}
-      className="w-full text-left flex gap-3 p-4 rounded-xl"
+      className="w-full text-left flex gap-3 p-4 rounded-2xl"
       style={{
-        background: '#141414',
-        border: '1px solid #1E1E1E',
+        background: '#111113',
+        border: '1px solid #1A1A1D',
         cursor: 'pointer',
-        transition: 'background 200ms',
+        transition: 'border-color 200ms',
         minHeight: 44,
       }}
+      onMouseEnter={e => (e.currentTarget.style.borderColor = '#27272A')}
+      onMouseLeave={e => (e.currentTarget.style.borderColor = '#1A1A1D')}
     >
       <div
         className="rounded-full shrink-0"
-        style={{ width: 4, minHeight: 40, background: color }}
+        style={{ width: 3, minHeight: 36, background: color, opacity: 0.8 }}
       />
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs" style={{ color: '#6B6B6B' }}>
+        <div className="flex items-center gap-2 mb-1.5">
+          <span style={{ fontSize: 11, color: '#52525B', fontWeight: 500 }}>
             {relativeDate(note.createdAt)}
           </span>
           <span
-            className="text-xs px-2 py-0.5 rounded-full"
-            style={{ background: color + '20', color }}
+            className="px-2 py-0.5 rounded-full"
+            style={{ fontSize: 10, background: color + '15', color, fontWeight: 500 }}
           >
             {tagLabels[note.tag]}
           </span>
         </div>
-        <p className="text-sm truncate" style={{ color: '#E5E5E5' }}>
+        <p className="text-sm truncate" style={{ color: '#A1A1AA', fontWeight: 400 }}>
           {preview}
         </p>
       </div>

@@ -41,61 +41,64 @@ export default function Home() {
   ]
 
   return (
-    <div className="flex flex-col min-h-screen pb-24">
+    <div className="flex flex-col min-h-full pb-20">
       {/* Header */}
-      <header className="px-5 pt-8 pb-2">
-        <h1 className="text-2xl font-bold" style={{ color: '#E5E5E5' }}>
-          Cadeia DBT
-        </h1>
-        <p className="text-sm mt-1" style={{ color: '#6B6B6B' }}>
+      <header className="px-5 pt-8 pb-6">
+        <p style={{ fontSize: 11, color: '#52525B', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>
           {formatDate(new Date())}
         </p>
+        <h1 className="text-xl font-semibold" style={{ color: '#FAFAFA', letterSpacing: '-0.02em' }}>
+          Cadeia DBT
+        </h1>
       </header>
 
       {/* Action buttons */}
-      <div className="px-5 pt-5 pb-2 flex gap-3">
+      <div className="px-5 flex gap-3 mb-5">
         <button
           onClick={() => navigate('/chain/new')}
-          className="flex-1 py-3.5 rounded-xl text-sm font-medium"
+          className="flex-1 py-3 rounded-xl text-sm font-medium"
           style={{
-            background: '#3B82F6',
+            background: '#0891B2',
             color: '#fff',
             border: 'none',
             cursor: 'pointer',
-            minHeight: 48,
+            minHeight: 44,
+            transition: 'opacity 200ms',
           }}
         >
-          + Análise em Cadeia
+          + Analise em Cadeia
         </button>
         <button
           onClick={() => navigate('/note/new')}
-          className="flex-1 py-3.5 rounded-xl text-sm font-medium"
+          className="flex-1 py-3 rounded-xl text-sm font-medium"
           style={{
             background: 'transparent',
-            color: '#E5E5E5',
-            border: '1px solid #2A2A2A',
+            color: '#A1A1AA',
+            border: '1px solid #27272A',
             cursor: 'pointer',
-            minHeight: 48,
+            minHeight: 44,
+            transition: 'border-color 200ms',
           }}
         >
-          + Nota Rápida
+          + Nota Rapida
         </button>
       </div>
 
       {/* Filter tabs */}
-      <div className="px-5 py-4 flex gap-2">
+      <div className="px-5 flex gap-1 mb-4">
         {filters.map(f => (
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            className="px-4 py-2.5 rounded-lg text-sm"
+            className="px-4 py-2 rounded-lg text-sm"
             style={{
-              background: filter === f.key ? '#1E1E1E' : 'transparent',
-              color: filter === f.key ? '#E5E5E5' : '#6B6B6B',
+              background: filter === f.key ? '#1A1A1D' : 'transparent',
+              color: filter === f.key ? '#FAFAFA' : '#52525B',
               border: 'none',
               cursor: 'pointer',
               minHeight: 44,
               transition: 'all 200ms',
+              fontWeight: filter === f.key ? 500 : 400,
             }}
           >
             {f.label}
@@ -104,7 +107,7 @@ export default function Home() {
       </div>
 
       {/* Items list */}
-      <div className="px-5 flex flex-col gap-3 flex-1">
+      <div className="px-5 flex flex-col gap-2 flex-1">
         {items.length === 0 ? (
           <EmptyState />
         ) : (

@@ -11,7 +11,7 @@ export default function App() {
     <BrowserRouter>
       <div
         className="mx-auto min-h-screen relative"
-        style={{ maxWidth: 480, background: '#0A0A0A' }}
+        style={{ maxWidth: 480, background: '#09090B' }}
       >
         <Routes>
           <Route path="/" element={<Home />} />

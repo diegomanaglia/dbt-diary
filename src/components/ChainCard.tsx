@@ -10,53 +10,56 @@ interface Props {
 export default function ChainCard({ entry, onClick }: Props) {
   const preview = entry.problemBehavior
     ? entry.problemBehavior.slice(0, 100) + (entry.problemBehavior.length > 100 ? '...' : '')
-    : 'Sem descrição'
+    : 'Sem descricao'
 
   return (
     <button
       onClick={onClick}
-      className="w-full text-left flex gap-3 p-4 rounded-xl"
+      className="w-full text-left flex gap-3 p-4 rounded-2xl"
       style={{
-        background: '#141414',
-        border: '1px solid #1E1E1E',
+        background: '#111113',
+        border: '1px solid #1A1A1D',
         cursor: 'pointer',
-        transition: 'background 200ms',
+        transition: 'border-color 200ms',
         minHeight: 44,
       }}
+      onMouseEnter={e => (e.currentTarget.style.borderColor = '#27272A')}
+      onMouseLeave={e => (e.currentTarget.style.borderColor = '#1A1A1D')}
     >
       <div
         className="rounded-full shrink-0"
         style={{
-          width: 4,
-          minHeight: 40,
+          width: 3,
+          minHeight: 36,
           background: intensityColor(entry.behaviorIntensity),
+          opacity: 0.8,
         }}
       />
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs" style={{ color: '#6B6B6B' }}>
+        <div className="flex items-center gap-2 mb-1.5">
+          <span style={{ fontSize: 11, color: '#52525B', fontWeight: 500 }}>
             {relativeDate(entry.createdAt)}
           </span>
           {!entry.isComplete && (
             <span
-              className="text-xs px-2 py-0.5 rounded-full"
-              style={{ background: '#F59E0B20', color: '#F59E0B' }}
+              className="px-2 py-0.5 rounded-full"
+              style={{ fontSize: 10, background: '#F59E0B15', color: '#F59E0B', fontWeight: 500 }}
             >
               Rascunho
             </span>
           )}
         </div>
-        <p className="text-sm truncate" style={{ color: '#E5E5E5' }}>
+        <p className="text-sm truncate" style={{ color: '#A1A1AA', fontWeight: 400 }}>
           {preview}
         </p>
       </div>
       <svg
-        width="20"
-        height="20"
+        width="16"
+        height="16"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#6B6B6B"
-        strokeWidth="2"
+        stroke="#3F3F46"
+        strokeWidth="1.5"
         className="shrink-0 self-center"
       >
         <polyline points="9 18 15 12 9 6" />
