@@ -29,7 +29,7 @@ export default function Stats() {
     <div className="flex flex-col min-h-full" style={{ paddingBottom: 100 }}>
       <header className="px-8 pt-12 pb-4">
         <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
-          Estatisticas
+          Estatísticas
         </h1>
       </header>
 
@@ -63,9 +63,9 @@ export default function Stats() {
       <div className="px-8 flex flex-col gap-8">
         {/* Summary cards */}
         <div className="grid grid-cols-2 gap-4">
-          <StatCard label="Analises" value={stats.totalChains} />
+          <StatCard label="Análises" value={stats.totalChains} />
           <StatCard
-            label="Intensidade media"
+            label="Intensidade média"
             value={stats.avgIntensity > 0 ? stats.avgIntensity.toFixed(1) : '--'}
           />
           <StatCard label="Finalizadas" value={stats.completeChains} color="var(--success)" />

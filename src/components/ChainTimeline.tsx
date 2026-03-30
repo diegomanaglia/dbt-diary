@@ -3,8 +3,8 @@ import type { ChainLink } from '../db'
 const typeConfig: Record<string, { color: string; label: string }> = {
   pensamento: { color: '#06B6D4', label: 'Pensamento' },
   sentimento: { color: '#FBBF24', label: 'Sentimento' },
-  sensacao: { color: '#A78BFA', label: 'Sensacao' },
-  acao: { color: '#F87171', label: 'Acao' },
+  sensacao: { color: '#A78BFA', label: 'Sensação' },
+  acao: { color: '#F87171', label: 'Ação' },
   evento: { color: '#34D399', label: 'Evento' },
 }
 

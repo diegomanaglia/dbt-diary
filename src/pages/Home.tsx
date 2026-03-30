@@ -59,14 +59,14 @@ export default function Home() {
           className="flex-1 py-3.5 btn-accent text-sm"
           style={{ minHeight: 48 }}
         >
-          + Analise em Cadeia
+          + Análise em Cadeia
         </button>
         <button
           onClick={() => navigate('/note/new')}
           className="flex-1 py-3.5 btn-ghost text-sm font-medium"
           style={{ minHeight: 48 }}
         >
-          + Nota Rapida
+          + Nota Rápida
         </button>
       </div>
 

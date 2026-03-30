@@ -114,7 +114,7 @@ function ChainForm({ editId }: ChainFormProps) {
         )}
         {step < TOTAL_STEPS && (
           <button onClick={goNext} className="flex-1 py-3.5 btn-accent text-sm" style={{ minHeight: 48 }}>
-            Proximo
+            Próximo
           </button>
         )}
       </div>
@@ -172,10 +172,10 @@ function Step1({ form, update }: StepProps) {
       </h2>
       <TextArea
         label="Descreva o comportamento-problema com detalhes"
-        hint="Seja especifico. Descreva como se um ator precisasse reproduzir a cena."
+        hint="Seja específico. Descreva como se um ator precisasse reproduzir a cena."
         value={form.problemBehavior}
         onChange={v => update('problemBehavior', v)}
-        placeholder="O que voce fez, disse, pensou ou sentiu?"
+        placeholder="O que você fez, disse, pensou ou sentiu?"
       />
       <div>
         <div className="flex justify-between items-center mb-3">
@@ -240,7 +240,7 @@ function Step3({ form, update }: StepProps) {
         onChange={v => update('vulnerabilityChecklist', v)}
       />
       <TextArea
-        label="Descreva o que te deixou mais vulneravel"
+        label="Descreva o que te deixou mais vulnerável"
         value={form.vulnerabilityFactors}
         onChange={v => update('vulnerabilityFactors', v)}
       />
@@ -272,7 +272,7 @@ function Step4({ form, update }: StepProps) {
         Elos da Cadeia
       </h2>
       <p style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.5 }}>
-        Detalhe cada pensamento, sentimento e acao entre o disparador e o comportamento-problema.
+        Detalhe cada pensamento, sentimento e ação entre o disparador e o comportamento-problema.
       </p>
 
       {links.map((link, i) => (
@@ -356,11 +356,11 @@ function Step4({ form, update }: StepProps) {
 function Step5({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-8">
-      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Consequencias</h2>
-      <TextArea label="Consequencias externas -- curto prazo" value={form.consequencesShortTerm} onChange={v => update('consequencesShortTerm', v)} rows={3} />
-      <TextArea label="Consequencias externas -- longo prazo" value={form.consequencesLongTerm} onChange={v => update('consequencesLongTerm', v)} rows={3} />
-      <TextArea label="Consequencias internas -- curto prazo" value={form.consequencesInternal} onChange={v => update('consequencesInternal', v)} rows={3} />
-      <TextArea label="Consequencias internas -- longo prazo" value={form.consequencesExternal} onChange={v => update('consequencesExternal', v)} rows={3} />
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Consequências</h2>
+      <TextArea label="Consequências externas — curto prazo" value={form.consequencesShortTerm} onChange={v => update('consequencesShortTerm', v)} rows={3} />
+      <TextArea label="Consequências externas — longo prazo" value={form.consequencesLongTerm} onChange={v => update('consequencesLongTerm', v)} rows={3} />
+      <TextArea label="Consequências internas — curto prazo" value={form.consequencesInternal} onChange={v => update('consequencesInternal', v)} rows={3} />
+      <TextArea label="Consequências internas — longo prazo" value={form.consequencesExternal} onChange={v => update('consequencesExternal', v)} rows={3} />
     </div>
   )
 }
@@ -370,8 +370,8 @@ function Step6({ form, update }: StepProps) {
     <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Habilidades Alternativas</h2>
       <TextArea
-        label="Que habilidades DBT poderiam substituir os elos problematicos?"
-        hint="Pense em Mindfulness, Tolerancia ao Mal-Estar, Regulacao Emocional, Efetividade Interpessoal."
+        label="Que habilidades DBT poderiam substituir os elos problemáticos?"
+        hint="Pense em Mindfulness, Tolerância ao Mal-Estar, Regulação Emocional, Efetividade Interpessoal."
         value={form.skillfulBehaviors}
         onChange={v => update('skillfulBehaviors', v)}
       />
@@ -382,10 +382,10 @@ function Step6({ form, update }: StepProps) {
 function Step7({ form, update }: StepProps) {
   return (
     <div className="flex flex-col gap-8">
-      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Plano de Prevencao</h2>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Plano de Prevenção</h2>
       <TextArea
         label="Como reduzir sua vulnerabilidade para que a cadeia nem comece?"
-        hint="Pense em rotinas, autocuidado, limites e estrategias preventivas."
+        hint="Pense em rotinas, autocuidado, limites e estratégias preventivas."
         value={form.preventionPlan}
         onChange={v => update('preventionPlan', v)}
       />
@@ -400,10 +400,10 @@ function Step8({
 }: StepProps & { onFinish: () => void }) {
   return (
     <div className="flex flex-col gap-8">
-      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Reparacao e Fechamento</h2>
+      <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Reparação e Fechamento</h2>
       <TextArea
-        label="O que voce pode fazer para reparar as consequencias?"
-        hint="Repare o dano real. Reconstrua confianca com acoes, nao com palavras."
+        label="O que você pode fazer para reparar as consequências?"
+        hint="Repare o dano real. Reconstrua confiança com ações, não com palavras."
         value={form.repairPlan}
         onChange={v => update('repairPlan', v)}
       />
@@ -411,7 +411,7 @@ function Step8({
       {/* Toggle */}
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
-          Reparacao realizada?
+          Reparação realizada?
         </span>
         <button
           type="button"
@@ -462,7 +462,7 @@ function Step8({
           boxShadow: '0 0 20px rgba(52, 211, 153, 0.2)',
         }}
       >
-        Finalizar Analise
+        Finalizar Análise
       </button>
     </div>
   )

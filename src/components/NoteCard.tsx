@@ -6,7 +6,7 @@ const tagConfig: Record<string, { color: string; label: string }> = {
   insight: { color: '#06B6D4', label: 'Insight' },
   gatilho: { color: '#FBBF24', label: 'Gatilho' },
   conquista: { color: '#34D399', label: 'Conquista' },
-  sessao: { color: '#A78BFA', label: 'Sessao' },
+  sessao: { color: '#A78BFA', label: 'Sessão' },
 }
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
 export default function NoteCard({ note, onClick }: Props) {
   const preview = note.content
     ? note.content.slice(0, 90) + (note.content.length > 90 ? '...' : '')
-    : 'Sem conteudo'
+    : 'Sem conteúdo'
 
   const tag = tagConfig[note.tag] || tagConfig.geral
 

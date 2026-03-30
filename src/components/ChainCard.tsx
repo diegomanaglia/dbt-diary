@@ -10,7 +10,7 @@ interface Props {
 export default function ChainCard({ entry, onClick }: Props) {
   const preview = entry.problemBehavior
     ? entry.problemBehavior.slice(0, 90) + (entry.problemBehavior.length > 90 ? '...' : '')
-    : 'Sem descricao'
+    : 'Sem descrição'
 
   const color = intensityColor(entry.behaviorIntensity)
 

@@ -41,12 +41,12 @@ export default function NoteNew() {
 
       <div className="px-8 flex flex-col gap-8 flex-1">
         <div>
-          <label className="label-upper block mb-4">Conteudo</label>
+          <label className="label-upper block mb-4">Conteúdo</label>
           <textarea
             value={content}
             onChange={e => setContent(e.target.value)}
             rows={6}
-            placeholder="O que esta em mente?"
+            placeholder="O que está em mente?"
             className="w-full input-glass text-sm"
             style={{ lineHeight: 1.7 }}
           />

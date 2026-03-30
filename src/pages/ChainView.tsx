@@ -43,7 +43,7 @@ export default function ChainView() {
           </p>
           <div className="flex items-center gap-2">
             <span className="badge" style={{ background: `${iColor}15`, color: iColor }}>
-              {entry.behaviorIntensity}/10 -- {intensityLabel(entry.behaviorIntensity)}
+              {entry.behaviorIntensity}/10 — {intensityLabel(entry.behaviorIntensity)}
             </span>
             {!entry.isComplete && (
               <span className="badge" style={{ background: 'rgba(251, 191, 36, 0.1)', color: 'var(--warning)' }}>
@@ -116,12 +116,12 @@ export default function ChainView() {
           <ChainTimeline links={entry.chainLinks} />
         </Section>
 
-        <Section title="5. Consequencias">
+        <Section title="5. Consequências">
           <div className="flex flex-col gap-5">
-            <SubSection label="Externas -- curto prazo" text={entry.consequencesShortTerm} />
-            <SubSection label="Externas -- longo prazo" text={entry.consequencesLongTerm} />
-            <SubSection label="Internas -- curto prazo" text={entry.consequencesInternal} />
-            <SubSection label="Internas -- longo prazo" text={entry.consequencesExternal} />
+            <SubSection label="Externas — curto prazo" text={entry.consequencesShortTerm} />
+            <SubSection label="Externas — longo prazo" text={entry.consequencesLongTerm} />
+            <SubSection label="Internas — curto prazo" text={entry.consequencesInternal} />
+            <SubSection label="Internas — longo prazo" text={entry.consequencesExternal} />
           </div>
         </Section>
 
@@ -131,13 +131,13 @@ export default function ChainView() {
           </p>
         </Section>
 
-        <Section title="7. Plano de Prevencao">
+        <Section title="7. Plano de Prevenção">
           <p className="text-sm" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
             {entry.preventionPlan || '--'}
           </p>
         </Section>
 
-        <Section title="8. Reparacao">
+        <Section title="8. Reparação">
           <p className="text-sm" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
             {entry.repairPlan || '--'}
           </p>
@@ -146,7 +146,7 @@ export default function ChainView() {
               background: entry.repairDone ? 'rgba(52, 211, 153, 0.1)' : 'rgba(251, 191, 36, 0.1)',
               color: entry.repairDone ? 'var(--success)' : 'var(--warning)',
             }}>
-              {entry.repairDone ? 'Reparacao realizada' : 'Reparacao pendente'}
+              {entry.repairDone ? 'Reparação realizada' : 'Reparação pendente'}
             </span>
           </div>
         </Section>
@@ -179,8 +179,8 @@ export default function ChainView() {
 
       {showDelete && (
         <ConfirmModal
-          title="Excluir analise"
-          message="Tem certeza que deseja excluir esta analise? Esta acao nao pode ser desfeita."
+          title="Excluir análise"
+          message="Tem certeza que deseja excluir esta análise? Esta ação não pode ser desfeita."
           confirmLabel="Excluir"
           onConfirm={handleDelete}
           onCancel={() => setShowDelete(false)}

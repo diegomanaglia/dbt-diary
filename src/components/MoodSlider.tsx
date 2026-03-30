@@ -10,7 +10,7 @@ export default function MoodSlider({ label, value, onChange }: Props) {
     if (v <= 4) return 'Baixo'
     if (v <= 6) return 'Neutro'
     if (v <= 8) return 'Bom'
-    return 'Otimo'
+    return 'Ótimo'
   }
 
   return (
