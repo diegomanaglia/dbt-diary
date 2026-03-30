@@ -23,8 +23,8 @@ export default function NoteNew() {
   }
 
   return (
-    <div className="flex flex-col min-h-full pb-20">
-      <header className="px-5 pt-5 pb-4 flex items-center gap-3">
+    <div className="flex flex-col min-h-screen">
+      <header className="px-5 pt-6 pb-4 flex items-center gap-3">
         <button
           onClick={() => navigate('/')}
           style={{
@@ -47,9 +47,9 @@ export default function NoteNew() {
         </h1>
       </header>
 
-      <div className="px-5 flex flex-col gap-5 flex-1">
+      <div className="px-5 flex flex-col gap-6 flex-1 py-2">
         <div>
-          <label className="block text-sm mb-2" style={{ color: '#6B6B6B' }}>
+          <label className="block text-sm font-medium mb-3" style={{ color: '#E5E5E5' }}>
             Conteúdo
           </label>
           <textarea
@@ -57,12 +57,13 @@ export default function NoteNew() {
             onChange={e => setContent(e.target.value)}
             rows={6}
             placeholder="O que está em mente?"
-            className="w-full p-4 rounded-xl text-sm"
+            className="w-full p-4 rounded-xl text-sm leading-relaxed"
             style={{
               background: '#1A1A1A',
               border: '1px solid #2A2A2A',
               color: '#E5E5E5',
               outline: 'none',
+              transition: 'border-color 200ms',
             }}
             onFocus={e => (e.target.style.borderColor = '#3B82F6')}
             onBlur={e => (e.target.style.borderColor = '#2A2A2A')}
@@ -72,7 +73,7 @@ export default function NoteNew() {
         <MoodSlider label="Humor" value={mood} onChange={setMood} />
 
         <div>
-          <label className="block text-sm mb-2" style={{ color: '#6B6B6B' }}>
+          <label className="block text-sm font-medium mb-3" style={{ color: '#E5E5E5' }}>
             Tag
           </label>
           <div className="flex flex-wrap gap-2">
@@ -81,7 +82,7 @@ export default function NoteNew() {
                 key={t.key}
                 type="button"
                 onClick={() => setTag(t.key as QuickNote['tag'])}
-                className="px-4 py-2 rounded-full text-sm"
+                className="px-4 py-2.5 rounded-full text-sm"
                 style={{
                   background: tag === t.key ? '#3B82F620' : '#1A1A1A',
                   border: `1px solid ${tag === t.key ? '#3B82F6' : '#2A2A2A'}`,
@@ -98,17 +99,23 @@ export default function NoteNew() {
         </div>
       </div>
 
-      <div className="px-5 py-4">
+      <div
+        className="px-5 py-4"
+        style={{
+          borderTop: '1px solid #1E1E1E',
+          paddingBottom: 'max(16px, env(safe-area-inset-bottom))',
+        }}
+      >
         <button
           onClick={handleSave}
           disabled={!content.trim()}
-          className="w-full py-3 rounded-xl text-sm font-medium"
+          className="w-full py-3.5 rounded-xl text-sm font-medium"
           style={{
             background: content.trim() ? '#3B82F6' : '#1E1E1E',
             color: content.trim() ? '#fff' : '#6B6B6B',
             border: 'none',
             cursor: content.trim() ? 'pointer' : 'default',
-            minHeight: 44,
+            minHeight: 48,
           }}
         >
           Salvar

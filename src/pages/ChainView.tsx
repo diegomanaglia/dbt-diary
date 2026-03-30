@@ -23,9 +23,9 @@ export default function ChainView() {
     VULNERABILITY_OPTIONS.find(v => v.key === key)?.label || key
 
   return (
-    <div className="flex flex-col min-h-full pb-20">
+    <div className="flex flex-col min-h-screen pb-24">
       {/* Header */}
-      <header className="px-5 pt-5 pb-3 flex items-center gap-3">
+      <header className="px-5 pt-6 pb-4 flex items-center gap-3">
         <button
           onClick={() => navigate('/')}
           style={{
@@ -44,12 +44,12 @@ export default function ChainView() {
           </svg>
         </button>
         <div className="flex-1">
-          <p className="text-sm" style={{ color: '#6B6B6B' }}>
+          <p className="text-sm mb-1" style={{ color: '#6B6B6B' }}>
             {relativeDate(entry.createdAt)}
           </p>
           <div className="flex items-center gap-2">
             <span
-              className="text-xs px-2 py-0.5 rounded-full"
+              className="text-xs px-2.5 py-1 rounded-full"
               style={{
                 background: intensityColor(entry.behaviorIntensity) + '20',
                 color: intensityColor(entry.behaviorIntensity),
@@ -59,7 +59,7 @@ export default function ChainView() {
             </span>
             {!entry.isComplete && (
               <span
-                className="text-xs px-2 py-0.5 rounded-full"
+                className="text-xs px-2.5 py-1 rounded-full"
                 style={{ background: '#F59E0B20', color: '#F59E0B' }}
               >
                 Rascunho
@@ -70,10 +70,10 @@ export default function ChainView() {
       </header>
 
       {/* Action buttons */}
-      <div className="px-5 flex gap-3 mb-5">
+      <div className="px-5 flex gap-3 mb-6">
         <button
           onClick={() => navigate(`/chain/${entry.id}/edit`)}
-          className="flex-1 py-2.5 rounded-xl text-sm"
+          className="flex-1 py-3 rounded-xl text-sm"
           style={{
             background: '#1A1A1A',
             border: '1px solid #2A2A2A',
@@ -86,7 +86,7 @@ export default function ChainView() {
         </button>
         <button
           onClick={() => setShowDelete(true)}
-          className="py-2.5 px-4 rounded-xl text-sm"
+          className="py-3 px-5 rounded-xl text-sm"
           style={{
             background: '#1A1A1A',
             border: '1px solid #2A2A2A',
@@ -100,19 +100,19 @@ export default function ChainView() {
       </div>
 
       {/* Content sections */}
-      <div className="px-5 flex flex-col gap-6">
+      <div className="px-5 flex flex-col gap-8">
         <Section title="1. Comportamento-Problema">
-          <p className="text-sm" style={{ color: '#E5E5E5' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
             {entry.problemBehavior || '—'}
           </p>
         </Section>
 
         <Section title="2. Evento Disparador">
-          <p className="text-sm" style={{ color: '#E5E5E5' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
             {entry.promptingEvent || '—'}
           </p>
           {entry.promptingEventDate && (
-            <p className="text-xs mt-1" style={{ color: '#6B6B6B' }}>
+            <p className="text-xs mt-2" style={{ color: '#6B6B6B' }}>
               Data: {entry.promptingEventDate}
             </p>
           )}
@@ -120,11 +120,11 @@ export default function ChainView() {
 
         <Section title="3. Fatores de Vulnerabilidade">
           {entry.vulnerabilityChecklist.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-2">
+            <div className="flex flex-wrap gap-2 mb-3">
               {entry.vulnerabilityChecklist.map(v => (
                 <span
                   key={v}
-                  className="text-xs px-2 py-1 rounded-full"
+                  className="text-xs px-2.5 py-1 rounded-full"
                   style={{ background: '#3B82F620', color: '#3B82F6' }}
                 >
                   {vulnLabel(v)}
@@ -132,7 +132,7 @@ export default function ChainView() {
               ))}
             </div>
           )}
-          <p className="text-sm" style={{ color: '#E5E5E5' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
             {entry.vulnerabilityFactors || '—'}
           </p>
         </Section>
@@ -142,47 +142,52 @@ export default function ChainView() {
         </Section>
 
         <Section title="5. Consequências">
-          <SubSection label="Externas — curto prazo" text={entry.consequencesShortTerm} />
-          <SubSection label="Externas — longo prazo" text={entry.consequencesLongTerm} />
-          <SubSection label="Internas — curto prazo" text={entry.consequencesInternal} />
-          <SubSection label="Internas — longo prazo" text={entry.consequencesExternal} />
+          <div className="flex flex-col gap-4">
+            <SubSection label="Externas — curto prazo" text={entry.consequencesShortTerm} />
+            <SubSection label="Externas — longo prazo" text={entry.consequencesLongTerm} />
+            <SubSection label="Internas — curto prazo" text={entry.consequencesInternal} />
+            <SubSection label="Internas — longo prazo" text={entry.consequencesExternal} />
+          </div>
         </Section>
 
         <Section title="6. Habilidades Alternativas">
-          <p className="text-sm" style={{ color: '#E5E5E5' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
             {entry.skillfulBehaviors || '—'}
           </p>
         </Section>
 
         <Section title="7. Plano de Prevenção">
-          <p className="text-sm" style={{ color: '#E5E5E5' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
             {entry.preventionPlan || '—'}
           </p>
         </Section>
 
         <Section title="8. Reparação">
-          <p className="text-sm" style={{ color: '#E5E5E5' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
             {entry.repairPlan || '—'}
           </p>
-          <p className="text-xs mt-2" style={{ color: entry.repairDone ? '#10B981' : '#F59E0B' }}>
+          <p className="text-xs mt-3" style={{ color: entry.repairDone ? '#10B981' : '#F59E0B' }}>
             {entry.repairDone ? 'Reparação realizada' : 'Reparação pendente'}
           </p>
         </Section>
 
         {/* Mood */}
         <div
-          className="p-4 rounded-xl flex justify-around"
+          className="p-5 rounded-xl flex justify-around"
           style={{ background: '#141414', border: '1px solid #1E1E1E' }}
         >
           <div className="text-center">
-            <p className="text-xs" style={{ color: '#6B6B6B' }}>Humor antes</p>
-            <p className="text-xl font-semibold" style={{ color: '#E5E5E5' }}>
+            <p className="text-xs mb-1" style={{ color: '#6B6B6B' }}>Humor antes</p>
+            <p className="text-2xl font-semibold" style={{ color: '#E5E5E5' }}>
               {entry.moodBefore}
             </p>
           </div>
+          <div
+            style={{ width: 1, background: '#1E1E1E' }}
+          />
           <div className="text-center">
-            <p className="text-xs" style={{ color: '#6B6B6B' }}>Humor depois</p>
-            <p className="text-xl font-semibold" style={{ color: '#3B82F6' }}>
+            <p className="text-xs mb-1" style={{ color: '#6B6B6B' }}>Humor depois</p>
+            <p className="text-2xl font-semibold" style={{ color: '#3B82F6' }}>
               {entry.moodAfter}
             </p>
           </div>
@@ -190,7 +195,7 @@ export default function ChainView() {
 
         {entry.notes && (
           <Section title="Notas">
-            <p className="text-sm" style={{ color: '#E5E5E5' }}>
+            <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
               {entry.notes}
             </p>
           </Section>
@@ -223,11 +228,11 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function SubSection({ label, text }: { label: string; text: string }) {
   return (
-    <div className="mb-3">
+    <div>
       <p className="text-xs mb-1" style={{ color: '#6B6B6B' }}>
         {label}
       </p>
-      <p className="text-sm" style={{ color: '#E5E5E5' }}>
+      <p className="text-sm leading-relaxed" style={{ color: '#E5E5E5' }}>
         {text || '—'}
       </p>
     </div>

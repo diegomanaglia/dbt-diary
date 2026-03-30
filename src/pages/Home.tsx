@@ -41,10 +41,10 @@ export default function Home() {
   ]
 
   return (
-    <div className="flex flex-col min-h-full pb-20">
+    <div className="flex flex-col min-h-screen pb-24">
       {/* Header */}
-      <header className="px-5 pt-5 pb-3">
-        <h1 className="text-xl font-semibold" style={{ color: '#E5E5E5' }}>
+      <header className="px-5 pt-8 pb-2">
+        <h1 className="text-2xl font-bold" style={{ color: '#E5E5E5' }}>
           Cadeia DBT
         </h1>
         <p className="text-sm mt-1" style={{ color: '#6B6B6B' }}>
@@ -53,29 +53,29 @@ export default function Home() {
       </header>
 
       {/* Action buttons */}
-      <div className="px-5 flex gap-3 mb-4">
+      <div className="px-5 pt-5 pb-2 flex gap-3">
         <button
           onClick={() => navigate('/chain/new')}
-          className="flex-1 py-3 rounded-xl text-sm font-medium"
+          className="flex-1 py-3.5 rounded-xl text-sm font-medium"
           style={{
             background: '#3B82F6',
             color: '#fff',
             border: 'none',
             cursor: 'pointer',
-            minHeight: 44,
+            minHeight: 48,
           }}
         >
           + Análise em Cadeia
         </button>
         <button
           onClick={() => navigate('/note/new')}
-          className="flex-1 py-3 rounded-xl text-sm font-medium"
+          className="flex-1 py-3.5 rounded-xl text-sm font-medium"
           style={{
             background: 'transparent',
             color: '#E5E5E5',
             border: '1px solid #2A2A2A',
             cursor: 'pointer',
-            minHeight: 44,
+            minHeight: 48,
           }}
         >
           + Nota Rápida
@@ -83,12 +83,12 @@ export default function Home() {
       </div>
 
       {/* Filter tabs */}
-      <div className="px-5 flex gap-1 mb-4">
+      <div className="px-5 py-4 flex gap-2">
         {filters.map(f => (
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            className="px-4 py-2 rounded-lg text-sm"
+            className="px-4 py-2.5 rounded-lg text-sm"
             style={{
               background: filter === f.key ? '#1E1E1E' : 'transparent',
               color: filter === f.key ? '#E5E5E5' : '#6B6B6B',
