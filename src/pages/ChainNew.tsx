@@ -101,10 +101,10 @@ function ChainForm({ editId }: ChainFormProps) {
 
       {/* Footer navigation */}
       <div
-        className="px-8 py-5 flex gap-3"
+        className="px-8 pt-5 flex gap-3"
         style={{
           borderTop: '1px solid var(--border-subtle)',
-          paddingBottom: 'max(20px, env(safe-area-inset-bottom))',
+          paddingBottom: 'max(88px, calc(88px + env(safe-area-inset-bottom)))',
         }}
       >
         {step > 1 && (
