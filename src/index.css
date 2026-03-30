@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,9 +10,10 @@
 
 html, body, #root {
   height: 100%;
-  background-color: #0A0A0A;
-  color: #E5E5E5;
-  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #09090B;
+  color: #FAFAFA;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 body {
@@ -31,4 +33,66 @@ textarea {
 ::-webkit-scrollbar {
   width: 0;
   display: none;
+}
+
+/* Custom range slider for dark minimal theme */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #27272A;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0891B2;
+  margin-top: -8px;
+  border: 2px solid #09090B;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: #27272A;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0891B2;
+  border: 2px solid #09090B;
+}
+
+input[type="range"]:focus-visible {
+  outline: 2px solid #0891B2;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Focus visible for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #0891B2;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

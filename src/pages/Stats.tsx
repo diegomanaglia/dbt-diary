@@ -27,26 +27,27 @@ export default function Stats() {
 
   return (
     <div className="flex flex-col min-h-full pb-20">
-      <header className="px-5 pt-5 pb-4">
-        <h1 className="text-xl font-semibold" style={{ color: '#E5E5E5' }}>
-          Estatísticas
+      <header className="px-5 pt-8 pb-6">
+        <h1 className="text-xl font-semibold" style={{ color: '#FAFAFA', letterSpacing: '-0.02em' }}>
+          Estatisticas
         </h1>
       </header>
 
       {/* Period selector */}
-      <div className="px-5 flex gap-1 mb-5">
+      <div className="px-5 flex gap-1 mb-6">
         {periods.map(p => (
           <button
             key={String(p.key)}
             onClick={() => setPeriod(p.key)}
             className="px-4 py-2 rounded-lg text-sm"
             style={{
-              background: period === p.key ? '#1E1E1E' : 'transparent',
-              color: period === p.key ? '#E5E5E5' : '#6B6B6B',
+              background: period === p.key ? '#1A1A1D' : 'transparent',
+              color: period === p.key ? '#FAFAFA' : '#52525B',
               border: 'none',
               cursor: 'pointer',
               minHeight: 44,
               transition: 'all 200ms',
+              fontWeight: period === p.key ? 500 : 400,
             }}
           >
             {p.label}
@@ -54,13 +55,13 @@ export default function Stats() {
         ))}
       </div>
 
-      <div className="px-5 flex flex-col gap-5">
+      <div className="px-5 flex flex-col gap-6">
         {/* Summary cards */}
-        <div className="grid grid-cols-2 gap-3">
-          <StatCard label="Análises" value={stats.totalChains} />
+        <div className="grid grid-cols-2 gap-2">
+          <StatCard label="Analises" value={stats.totalChains} />
           <StatCard
-            label="Intensidade média"
-            value={stats.avgIntensity > 0 ? stats.avgIntensity.toFixed(1) : '—'}
+            label="Intensidade media"
+            value={stats.avgIntensity > 0 ? stats.avgIntensity.toFixed(1) : '--'}
           />
           <StatCard label="Finalizadas" value={stats.completeChains} color="#10B981" />
           <StatCard label="Rascunhos" value={stats.draftChains} color="#F59E0B" />
@@ -68,7 +69,7 @@ export default function Stats() {
 
         {/* Mood chart */}
         <div>
-          <h2 className="text-sm font-medium mb-3" style={{ color: '#E5E5E5' }}>
+          <h2 className="mb-3" style={{ fontSize: 11, color: '#52525B', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
             Humor ao longo do tempo
           </h2>
           <MiniChart data={stats.moodData} />
@@ -77,29 +78,29 @@ export default function Stats() {
         {/* Vulnerability factors */}
         {vulnEntries.length > 0 && (
           <div>
-            <h2 className="text-sm font-medium mb-3" style={{ color: '#E5E5E5' }}>
+            <h2 className="mb-3" style={{ fontSize: 11, color: '#52525B', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
               Fatores de vulnerabilidade
             </h2>
             <div className="flex flex-col gap-3">
               {vulnEntries.map(([key, count]) => (
                 <div key={key}>
                   <div className="flex justify-between mb-1">
-                    <span className="text-sm" style={{ color: '#E5E5E5' }}>
+                    <span className="text-sm" style={{ color: '#A1A1AA' }}>
                       {vulnLabel(key)}
                     </span>
-                    <span className="text-sm" style={{ color: '#6B6B6B' }}>
+                    <span style={{ fontSize: 11, color: '#52525B', fontWeight: 500 }}>
                       {count}
                     </span>
                   </div>
                   <div
                     className="rounded-full overflow-hidden"
-                    style={{ height: 6, background: '#1E1E1E' }}
+                    style={{ height: 3, background: '#1A1A1D' }}
                   >
                     <div
                       className="h-full rounded-full"
                       style={{
                         width: `${(count / maxVuln) * 100}%`,
-                        background: '#3B82F6',
+                        background: '#0891B2',
                         transition: 'width 300ms',
                       }}
                     />
@@ -125,15 +126,15 @@ function StatCard({
 }) {
   return (
     <div
-      className="p-4 rounded-xl"
-      style={{ background: '#141414', border: '1px solid #1E1E1E' }}
+      className="p-4 rounded-2xl"
+      style={{ background: '#111113', border: '1px solid #1A1A1D' }}
     >
-      <p className="text-xs mb-1" style={{ color: '#6B6B6B' }}>
+      <p className="mb-1" style={{ fontSize: 11, color: '#52525B', fontWeight: 500 }}>
         {label}
       </p>
       <p
         className="text-2xl font-semibold"
-        style={{ color: color || '#E5E5E5' }}
+        style={{ color: color || '#FAFAFA', letterSpacing: '-0.02em' }}
       >
         {value}
       </p>
