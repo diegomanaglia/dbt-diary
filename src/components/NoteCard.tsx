@@ -24,7 +24,7 @@ export default function NoteCard({ note, onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      className="w-full text-left glass glass-hover p-4 flex gap-4"
+      className="w-full text-left glass glass-hover p-5 flex gap-4"
       style={{ cursor: 'pointer', minHeight: 44 }}
     >
       <div className="shrink-0 pt-1">

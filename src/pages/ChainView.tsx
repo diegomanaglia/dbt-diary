@@ -27,7 +27,7 @@ export default function ChainView() {
   return (
     <div className="flex flex-col min-h-full" style={{ paddingBottom: 100 }}>
       {/* Header */}
-      <header className="px-6 pt-6 pb-4 flex items-center gap-3">
+      <header className="px-6 pt-8 pb-5 flex items-center gap-4">
         <button
           onClick={() => navigate('/')}
           className="btn-ghost flex items-center justify-center"
@@ -55,7 +55,7 @@ export default function ChainView() {
       </header>
 
       {/* Action buttons */}
-      <div className="px-6 flex gap-3 mb-6">
+      <div className="px-6 flex gap-3 mb-8">
         <button
           onClick={() => navigate(`/chain/${entry.id}/edit`)}
           className="flex-1 py-3 btn-ghost text-sm font-medium"
@@ -81,7 +81,7 @@ export default function ChainView() {
       </div>
 
       {/* Content sections */}
-      <div className="px-6 flex flex-col gap-8">
+      <div className="px-6 flex flex-col gap-10">
         <Section title="1. Comportamento-Problema">
           <p className="text-sm" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
             {entry.problemBehavior || '--'}
@@ -117,7 +117,7 @@ export default function ChainView() {
         </Section>
 
         <Section title="5. Consequencias">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-5">
             <SubSection label="Externas -- curto prazo" text={entry.consequencesShortTerm} />
             <SubSection label="Externas -- longo prazo" text={entry.consequencesLongTerm} />
             <SubSection label="Internas -- curto prazo" text={entry.consequencesInternal} />
@@ -152,7 +152,7 @@ export default function ChainView() {
         </Section>
 
         {/* Mood comparison */}
-        <div className="glass p-6 flex justify-around" style={{ borderRadius: 20 }}>
+        <div className="glass p-8 flex justify-around">
           <div className="text-center">
             <p className="label-upper mb-2">Antes</p>
             <p className="text-3xl font-bold" style={{ color: 'var(--text-secondary)', letterSpacing: '-0.03em' }}>
@@ -193,7 +193,7 @@ export default function ChainView() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="section-title mb-4">{title}</h3>
+      <h3 className="section-title mb-5">{title}</h3>
       {children}
     </div>
   )

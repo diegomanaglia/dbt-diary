@@ -17,7 +17,7 @@ export default function ChainCard({ entry, onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      className="w-full text-left glass glass-hover p-4 flex gap-4"
+      className="w-full text-left glass glass-hover p-5 flex gap-4"
       style={{ cursor: 'pointer', minHeight: 44 }}
     >
       <div className="shrink-0 flex flex-col items-center gap-1.5 pt-0.5">

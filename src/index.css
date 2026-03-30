@@ -69,7 +69,7 @@ textarea {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
+  border-radius: 20px;
 }
 
 .glass-hover {
@@ -124,9 +124,10 @@ textarea {
 .input-glass {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-subtle);
-  border-radius: 14px;
+  border-radius: 16px;
   color: var(--text-primary);
   outline: none;
+  padding: 16px 20px;
   transition: border-color 250ms ease, box-shadow 250ms ease;
 }
 
@@ -212,7 +213,7 @@ select:focus-visible {
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 8px;
   font-size: 11px;
   font-weight: 600;

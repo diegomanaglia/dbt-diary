@@ -24,7 +24,7 @@ export default function NoteNew() {
 
   return (
     <div className="flex flex-col min-h-full" style={{ paddingBottom: 100 }}>
-      <header className="px-6 pt-6 pb-4 flex items-center gap-3">
+      <header className="px-6 pt-8 pb-6 flex items-center gap-4">
         <button
           onClick={() => navigate('/')}
           className="btn-ghost flex items-center justify-center"
@@ -39,15 +39,15 @@ export default function NoteNew() {
         </h1>
       </header>
 
-      <div className="px-6 flex flex-col gap-6 flex-1">
+      <div className="px-6 flex flex-col gap-8 flex-1">
         <div>
-          <label className="label-upper block mb-3">Conteudo</label>
+          <label className="label-upper block mb-4">Conteudo</label>
           <textarea
             value={content}
             onChange={e => setContent(e.target.value)}
             rows={6}
             placeholder="O que esta em mente?"
-            className="w-full p-4 input-glass text-sm"
+            className="w-full input-glass text-sm"
             style={{ lineHeight: 1.7 }}
           />
         </div>
@@ -55,7 +55,7 @@ export default function NoteNew() {
         <MoodSlider label="Humor" value={mood} onChange={setMood} />
 
         <div>
-          <label className="label-upper block mb-3">Tag</label>
+          <label className="label-upper block mb-4">Tag</label>
           <div className="flex flex-wrap gap-2">
             {NOTE_TAGS.map(t => {
               const active = tag === t.key

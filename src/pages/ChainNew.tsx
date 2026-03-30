@@ -70,7 +70,7 @@ function ChainForm({ editId }: ChainFormProps) {
   return (
     <div className="flex flex-col min-h-full">
       {/* Header */}
-      <header className="px-6 pt-6 pb-4 flex items-center gap-3">
+      <header className="px-6 pt-8 pb-5 flex items-center gap-4">
         <button
           onClick={() => navigate('/')}
           className="btn-ghost flex items-center justify-center"
@@ -86,7 +86,7 @@ function ChainForm({ editId }: ChainFormProps) {
       </header>
 
       {/* Step content */}
-      <div className="flex-1 px-6 py-4 overflow-y-auto">
+      <div className="flex-1 px-6 py-6 overflow-y-auto">
         {step === 1 && <Step1 form={form} update={update} />}
         {step === 2 && <Step2 form={form} update={update} />}
         {step === 3 && <Step3 form={form} update={update} />}
@@ -146,13 +146,13 @@ function TextArea({
 }) {
   return (
     <div>
-      <label className="label-upper block mb-3">{label}</label>
+      <label className="label-upper block mb-4">{label}</label>
       <textarea
         value={value}
         onChange={e => onChange(e.target.value)}
         rows={rows}
         placeholder={placeholder}
-        className="w-full p-4 input-glass text-sm"
+        className="w-full input-glass text-sm"
         style={{ lineHeight: 1.7 }}
       />
       {hint && (
@@ -166,7 +166,7 @@ function TextArea({
 
 function Step1({ form, update }: StepProps) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Comportamento-Problema
       </h2>
@@ -205,7 +205,7 @@ function Step1({ form, update }: StepProps) {
 
 function Step2({ form, update }: StepProps) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Evento Disparador
       </h2>
@@ -221,7 +221,7 @@ function Step2({ form, update }: StepProps) {
           type="date"
           value={form.promptingEventDate}
           onChange={e => update('promptingEventDate', e.target.value)}
-          className="w-full p-4 input-glass text-sm"
+          className="w-full input-glass text-sm"
           style={{ minHeight: 44 }}
         />
       </div>
@@ -231,7 +231,7 @@ function Step2({ form, update }: StepProps) {
 
 function Step3({ form, update }: StepProps) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Fatores de Vulnerabilidade
       </h2>
@@ -267,7 +267,7 @@ function Step4({ form, update }: StepProps) {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
         Elos da Cadeia
       </h2>
@@ -283,8 +283,8 @@ function Step4({ form, update }: StepProps) {
               <div style={{ width: 1, flex: 1, background: 'var(--border-subtle)' }} />
             )}
           </div>
-          <div className="flex-1 glass p-4" style={{ borderRadius: 14 }}>
-            <div className="flex flex-wrap gap-1 mb-3">
+          <div className="flex-1 glass p-5" style={{ borderRadius: 16 }}>
+            <div className="flex flex-wrap gap-2 mb-4">
               {CHAIN_LINK_TYPES.map(t => {
                 const active = link.type === t.key
                 return (
@@ -315,7 +315,7 @@ function Step4({ form, update }: StepProps) {
                 onChange={e => updateLink(i, 'content', e.target.value)}
                 rows={2}
                 placeholder="Descreva este elo..."
-                className="flex-1 p-3 input-glass text-sm"
+                className="flex-1 input-glass text-sm"
                 style={{ borderRadius: 10, lineHeight: 1.5 }}
               />
               <button
@@ -355,7 +355,7 @@ function Step4({ form, update }: StepProps) {
 
 function Step5({ form, update }: StepProps) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Consequencias</h2>
       <TextArea label="Consequencias externas -- curto prazo" value={form.consequencesShortTerm} onChange={v => update('consequencesShortTerm', v)} rows={3} />
       <TextArea label="Consequencias externas -- longo prazo" value={form.consequencesLongTerm} onChange={v => update('consequencesLongTerm', v)} rows={3} />
@@ -367,7 +367,7 @@ function Step5({ form, update }: StepProps) {
 
 function Step6({ form, update }: StepProps) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Habilidades Alternativas</h2>
       <TextArea
         label="Que habilidades DBT poderiam substituir os elos problematicos?"
@@ -381,7 +381,7 @@ function Step6({ form, update }: StepProps) {
 
 function Step7({ form, update }: StepProps) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Plano de Prevencao</h2>
       <TextArea
         label="Como reduzir sua vulnerabilidade para que a cadeia nem comece?"
@@ -399,7 +399,7 @@ function Step8({
   onFinish,
 }: StepProps & { onFinish: () => void }) {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Reparacao e Fechamento</h2>
       <TextArea
         label="O que voce pode fazer para reparar as consequencias?"

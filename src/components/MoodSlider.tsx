@@ -14,7 +14,7 @@ export default function MoodSlider({ label, value, onChange }: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
           {label}

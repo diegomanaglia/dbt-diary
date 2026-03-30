@@ -37,7 +37,7 @@ export default function ChainTimeline({ links }: Props) {
                 <div style={{ width: 2, flex: 1, minHeight: 20, borderRadius: 1, background: `linear-gradient(to bottom, ${config.color}30, rgba(255,255,255,0.04))` }} />
               )}
             </div>
-            <div className="pb-5 flex-1 min-w-0">
+            <div className="pb-6 flex-1 min-w-0">
               <span className="badge" style={{ background: `${config.color}15`, color: config.color, marginBottom: 6 }}>
                 {config.label}
               </span>
